@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <h2>{{ question.name }}</h2>
+    <a href="{% url 'quiz_app:display_question' 0 %}">{{ button }}</a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Question {{ question_index }} of {{ total_questions }}</h1>
+    <h2>{{ question.name }}</h2>
+    <!-- <ul>
+        <li>{{ question.option_a }}</li>
+        <li>{{ question.option_b }}</li>
+        <li>{{ question.option_c }}</li>
+        <li>{{ question.option_d }}</li>
+    </ul> -->
+    <form action="{% url 'quiz_app:submit_answer' question_index %}" method="post">
+        {% csrf_token %}
+        <input type="radio" name="answer" value="A"> {{ question.option_a }}<br>
+        <input type="radio" name="answer" value="B"> {{ question.option_b }}<br>
+        <input type="radio" name="answer" value="C"> {{ question.option_c }}<br>
+        <input type="radio" name="answer" value="D"> {{ question.option_d }}<br>
+        <hr>
+        <input type="submit" value="Submit Answer">
+    </form>
+</body>
+</html>

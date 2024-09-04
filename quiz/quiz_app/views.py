@@ -34,7 +34,7 @@ def submit_answer(request, question_index, template_name = 'index/question.html'
         user_answer.question = Question.objects.get(id = question.id)
         user_answer.answer = form.cleaned_data.get('answer')
         user_answer.save()
-        if (question_index < total-1):
+        if (question_index < total - 1):
             print('Simpan dieksekusi')
             return redirect('quiz_app:display_question', question_index + 1) 
         else:
@@ -44,33 +44,3 @@ def submit_answer(request, question_index, template_name = 'index/question.html'
         'form' : form,
     }
     return render(request, template_name, context)
-
-    # user_answer = request.POST.get('answer')    
-    # question = Question.objects.all()[question_index]
-    # correct_answer = question.correct_answer
-    # if request.method == 'POST':
-    #     print(correct_answer)
-    # # Evaluate the answer and update quiz state
-    # # ...
-    # return redirect('quiz_app:display_question', question_index + 1) 
-
-# class StartQuiz(View):
-
-#     def get(self, request, question_index, *args, **kwargs):
-#         total_questions = Question.objects.count()
-#         question = Question.objects.all()[question_index]
-#         context = {
-#             'question' : question,
-#             'question_index' : question_index,
-#             'total_questions' : total_questions,
-#         }
-#         return render(request, 'index/question.html', context)
-    
-#     def post(self, request, *args, **kwargs):
-#         if request.method == 'POST':
-#             x = request.get
-#             pass
-#             # question = Question.objects.all()[question_index]
-#             # correct_answer = question.correct_answer
-#             # print(correct_answer)
-#         return redirect('quiz_app:display_question', 1)
